@@ -3,7 +3,12 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import App from './App.jsx';
-import SignUp from './components/SignUp.jsx';
+import { lazy, Suspense } from 'react';
+
+
+// lazy loading implementation
+const SignUp = lazy(()=> import('./components/SignUp.jsx'));
+
 
 // creating app router
 const appRouter = createBrowserRouter([
@@ -13,7 +18,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "register",
-        element: <SignUp />
+        element: (
+          <Suspense fallback="Loding...">
+            <SignUp />
+          </Suspense>
+        )
       }
     ]
   }
