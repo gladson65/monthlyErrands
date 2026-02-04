@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 function Navbar() {
 
     return (
 
         <>
-            <header className="w-dvw h-20 bg-red-400 p-4">
+            <header className="w-dvw h-20 bg-red-400">
                 <nav className="w-full h-full bg-red-500">
                     <div id="logo">
                         <h1>Monthly Errands</h1>
