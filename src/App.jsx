@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify';
 import './App.css'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={5000}/>
       <Navbar />
       <Outlet />
     </>
