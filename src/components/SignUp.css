@@ -1,0 +1,17 @@
+#signUp {
+    margin: 20px;
+}
+
+.signDiv {
+    margin-top: 7px;
+}
+
+.googleBtn {
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 7px;
+}
+
+.form-content input {
+    padding: 7px;
+}
