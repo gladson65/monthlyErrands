@@ -5,7 +5,7 @@ function SignUp() {
 
     return (
         <>
-            <div id="signUp" className="w-screen h-screen flex justify-center items-start pt-20 gap-12">
+            <div id="signUp" className="w-[100%] h-screen flex justify-center items-start pt-20 gap-12">
 
                 <div className="hidden md:block">
                     {/* https://www.vhv.rs/dpng/d/242-2424386_funny-man-png-9-95017-arabic-teacher-funny.png */}
