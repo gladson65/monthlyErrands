@@ -12,6 +12,33 @@
     border-radius: 7px;
 }
 
+.form-content {
+    padding: 7px;
+}
+
+.form-content div {
+    padding: 7px;
+}
+
 .form-content input {
     padding: 7px;
+}
+
+.signup-btn {
+    padding: 4px;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+}
+
+.googleBtn {
+    transition: all 0.5s linear;
+}
+
+.googleBtn:hover {
+    cursor: pointer;
+    transform: translateY(1px);
+    background-color: rgb(247, 251, 45);
+    color: blue;
 }

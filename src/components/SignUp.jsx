@@ -3,14 +3,16 @@ import './SignUp.css';
 
 function SignUp() {
 
+    // 
+
     return (
         <>
             <div id="signUp" className="w-[100%] h-screen flex justify-center items-start pt-20 gap-12">
 
                 <div className="hidden md:block">
                     {/* https://www.vhv.rs/dpng/d/242-2424386_funny-man-png-9-95017-arabic-teacher-funny.png */}
-                    <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2lu8EliWnvD1-P5YL3euiy8ev9g8KsF6MiQ&s"
-                    height="200px" width="200px"/>
+                    <img src="https://preview.redd.it/uvibci1kih031.jpg?width=640&crop=smart&auto=webp&s=24aa905ef5dafbdaacee7a24d85414cbc8ab739c"
+                    height="200px" width="200px" alt="register-image"/>
                 </div>
                 <div className="form-content h-auto w-96 flex flex-col justify-center gap-6">
                     <h2 className="text-gray-500">
@@ -41,8 +43,8 @@ function SignUp() {
                     
                     
 
-                    <div className="signDiv w-full flex justify-start items-center py-1 gap-7 transition-all duration-200">
-                        <button className={`signup-btn py-3 px-2 rounded-lg hover:bg-cyan-500 transition-all duation-150 `}>
+                    <div className="signDiv w-full flex justify-center items-center py-1 gap-7 transition-all duration-200">
+                        <button className={`signup-btn rounded-lg hover:bg-cyan-500 transition-all duation-150 `}>
                             Sign me up!
                         </button>
                         <span>or</span>
