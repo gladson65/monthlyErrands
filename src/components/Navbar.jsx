@@ -1,23 +1,26 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import userContext from '../utils/userContext';
 
-function Navbar() {
+function Navbar({userNameApp}) {
 
     // state variables
     const [ showName, setShowName ] = useState("");
-
-
+    
     useEffect(()=> {
+        console.log("from navbar")
         // taking data from the local storage
         const token = localStorage.getItem("monthlyToken");
+        if (!token) return;
         if (token.split(" ")[0] === 'JWT') {
             // get the login user
             const userName = localStorage.getItem("monthlyUser");
             // store inside state variable
             setShowName(prev=> userName);
         }
-    }, [])
+    }, [userNameApp]);
 
     return (
 
@@ -31,9 +34,9 @@ function Navbar() {
                     </div>
                     <div id="navigation" className='w-full'>
                         {
-                            showName ?
+                            showName && userNameApp ?
                             <>
-                                <Link to={"login"} className='bg-zinc-600 text-yellow-300'>{showName}</Link>
+                                <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{userNameApp || showName}</Link>
                             </>
                             :
                             <>

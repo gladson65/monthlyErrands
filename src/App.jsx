@@ -1,17 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify';
-import './App.css'
+import { useContext } from 'react';
+import userContext from './utils/userContext';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [ userNameApp, setUserName ] = useState("");
+
+  useEffect(()=> {
+    
+  }, [userNameApp])
 
   return (
     <>
       <ToastContainer position="bottom-right" autoClose={5000}/>
-      <Navbar />
-      <Outlet />
+      
+        <Navbar userNameApp={userNameApp}/>
+        <Outlet context={[setUserName]}/>
+      
+      
     </>
   )
 }

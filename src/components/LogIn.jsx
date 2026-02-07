@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import userContext from '../utils/userContext';
 import './Login.css';
 
 
@@ -10,9 +11,11 @@ function Login() {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
+    // destructuring outlet context
+    const [setUserName] = useOutletContext();
+
     // useNavigate for navigation
     const navigate = useNavigate();
-
 
     // login function
     function loginFunc(e) {
@@ -49,17 +52,16 @@ function Login() {
                     localStorage.setItem('monthlyUser', `${user.name}`);
                     localStorage.setItem('monthlyEmail', `${user.email}`);
                     localStorage.setItem('monthlyToken', `JWT ${user.token}`);
-                    
                     // clear the form data
                     document.getElementById("email").value = "";
                     document.getElementById("password").value = "";
-
+                    // passing user.name to outlet context
+                    setUserName(prev=> user.name)
                     // navigate to the home page
                     setTimeout(()=> {
                         navigate('/')
                     }, 5000)
                     
-                    return;
                 }
                 else if (user.error) {
                     // error message
