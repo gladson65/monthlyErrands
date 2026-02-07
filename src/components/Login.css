@@ -1,0 +1,24 @@
+#login {
+    margin: 20px;
+}
+
+.form-content {
+    padding: 7px;
+}
+
+.form-content div {
+    padding: 7px;
+}
+
+.form-content input {
+    padding: 7px;
+}
+
+
+.login-btn {
+    padding: 4px;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+}

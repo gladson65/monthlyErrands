@@ -8,6 +8,7 @@ import { lazy, Suspense } from 'react';
 
 // lazy loading implementation
 const SignUp = lazy(()=> import('./components/SignUp.jsx'));
+const Login = lazy(()=> import('./components/LogIn.jsx'));
 
 
 // creating app router
@@ -23,7 +24,15 @@ const appRouter = createBrowserRouter([
             <SignUp />
           </Suspense>
         )
-      }
+      },
+      {
+        path: "login",
+        element: (
+          <Suspense fallback="Loding...">
+            <Login />
+          </Suspense>
+        )
+      },
     ]
   }
 ])
