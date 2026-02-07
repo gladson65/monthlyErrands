@@ -33,11 +33,11 @@ function Navbar() {
                         {
                             showName ?
                             <>
-                                <Link>{showName}</Link>
+                                <Link to={"login"} className='bg-zinc-600 text-yellow-300'>{showName}</Link>
                             </>
                             :
                             <>
-                                <Link to={"register"}>Sign Up</Link>
+                                <Link to={"register"} className='bg-red-400'>Sign Up</Link>
                             </>
                         }
 
