@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { useState, useEffect } from 'react';
 
 function Navbar() {
+
+    // state variables
+    const [ showName, setShowName ] = useState("");
+
+
+    useEffect(()=> {
+        // taking data from the local storage
+        const token = localStorage.getItem("monthlyToken");
+        if (token.split(" ")[0] === 'JWT') {
+            // get the login user
+            const userName = localStorage.getItem("monthlyUser");
+            // store inside state variable
+            setShowName(prev=> userName);
+        }
+    }, [])
 
     return (
 
@@ -14,7 +30,17 @@ function Navbar() {
                         </h1>
                     </div>
                     <div id="navigation" className='w-full'>
-                        <Link to={"register"}>Sign Up</Link>
+                        {
+                            showName ?
+                            <>
+                                <Link>{showName}</Link>
+                            </>
+                            :
+                            <>
+                                <Link to={"register"}>Sign Up</Link>
+                            </>
+                        }
+
                     </div>
                 </nav>
             </header>

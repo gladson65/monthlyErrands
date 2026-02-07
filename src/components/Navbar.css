@@ -22,7 +22,7 @@ nav {
 }
 
 #navigation a {
-    width: 5rem;
+    width: auto;
     height: auto;
     padding: 4px;
     background-color: aqua;
