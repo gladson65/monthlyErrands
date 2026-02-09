@@ -1,0 +1,40 @@
+
+#spenseDiv {
+    width: 100%;
+    height: 100dvh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+#spenseDiv form {
+    padding: 7px;
+}
+
+#spenseDiv form input {
+    padding: 7px;
+}
+
+#buttonDiv {
+    width: 50%;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonDiv button {
+    background-color: bisque;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 7px;
+    transition: all 0.5s linear;
+}
+
+#buttonDiv button:hover {
+    background-color: rgb(249, 188, 112);
+    cursor: pointer;
+}
