@@ -1,6 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store/store.js';
 import './index.css';
 import App from './App.jsx';
 import { lazy, Suspense } from 'react';
@@ -17,7 +19,11 @@ const Form = lazy(()=> import('./components/Form.jsx'));
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    ),
     children: [
       {
         path: "register",

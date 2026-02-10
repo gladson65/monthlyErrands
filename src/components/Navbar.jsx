@@ -2,15 +2,19 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
-import userContext from '../utils/userContext';
+import { useSelector, useDispatch } from 'react-redux';
 
-function Navbar({userNameApp}) {
+function Navbar() {
 
     // state variables
     const [ showName, setShowName ] = useState("");
+
+    // for redux store
+    const uSer = useSelector((state)=> state.auth.authUser);
     
     useEffect(()=> {
         console.log("from navbar")
+        console.log("from redux", uSer);
         // taking data from the local storage
         const token = localStorage.getItem("monthlyToken");
         if (!token) return;
@@ -20,7 +24,7 @@ function Navbar({userNameApp}) {
             // store inside state variable
             setShowName(prev=> userName);
         }
-    }, [userNameApp]);
+    }, []);
 
     return (
 
@@ -34,9 +38,9 @@ function Navbar({userNameApp}) {
                     </div>
                     <div id="navigation" className='w-full'>
                         {
-                            showName && userNameApp ?
+                            uSer ?
                             <>
-                                <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{userNameApp || showName}</Link>
+                                <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{uSer}</Link>
                             </>
                             :
                             <>

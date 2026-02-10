@@ -1,18 +1,22 @@
 import { useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import userContext from '../utils/userContext';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../store/authSlice.js';
 import './Login.css';
 
 
 function Login() {
+
+    // for redux store
+    const dispatch = useDispatch();
 
     // state variables
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
     // destructuring outlet context
-    const [setUserName] = useOutletContext();
+    // const [setUserName] = useOutletContext();
 
     // useNavigate for navigation
     const navigate = useNavigate();
@@ -52,11 +56,15 @@ function Login() {
                     localStorage.setItem('monthlyUser', `${user.name}`);
                     localStorage.setItem('monthlyEmail', `${user.email}`);
                     localStorage.setItem('monthlyToken', `JWT ${user.token}`);
+
+                    // store in redux
+                    dispatch(setAuth({user: user.name, token: user.token}));
+
                     // clear the form data
                     document.getElementById("email").value = "";
                     document.getElementById("password").value = "";
                     // passing user.name to outlet context
-                    setUserName(prev=> user.name)
+                    // setUserName(prev=> user.name)
                     // navigate to the home page
                     setTimeout(()=> {
                         navigate('/')

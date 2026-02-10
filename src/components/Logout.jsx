@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearAuth } from '../store/authSlice.js';
 import './Login.css';
 
 function LogOut() {
@@ -8,8 +10,8 @@ function LogOut() {
     // for navigation
     const navigate = useNavigate();
 
-    // destructuring outlet context
-    const [setUserName] = useOutletContext();
+    // for dispatch reducer action
+    const dispatch = useDispatch();
 
     // to store setTimeOut
     let setTime;
@@ -23,8 +25,9 @@ function LogOut() {
         localStorage.removeItem("monthlyEmail");
         localStorage.removeItem("monthlyToken");
         localStorage.removeItem("monthlyUser");
-        // passing user.name to outlet context
-        setUserName(prev=> "")
+        
+        // subscribe into reducer action
+        dispatch(clearAuth());
 
         setTime = setTimeout(()=> {
             navigate("/");
