@@ -44,7 +44,7 @@ function Navbar() {
                             </>
                             :
                             <>
-                                <Link to={"register"} className='bg-red-400'>Sign Up</Link>
+                                <Link to={"register"} className='bg-red-400'>Register Yourself</Link>
                             </>
                         }
 
