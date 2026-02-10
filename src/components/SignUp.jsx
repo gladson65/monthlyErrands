@@ -1,4 +1,4 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from 'react-toastify'
 import './SignUp.css';
@@ -123,6 +123,11 @@ function SignUp() {
                         <button className="googleBtn">
                             Sign up with Google
                         </button>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-blue-800">Do you have an account? 
+                            <Link to={"/login"} className="text-blue-900 text-xl hover:cursor-pointer"> login </Link>
+                        </p>
                     </div>
                     
                 </div>
