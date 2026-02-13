@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import './Form.css';
 
@@ -10,26 +11,25 @@ function Form() {
     const [ spendOn, setSpendOn ] = useState("");
     const [ money, setMoney ] = useState(0);
 
+    // get token from the redux 
+    let token = useSelector((store)=> store.auth.authToken)
 
     // function for storing expenses
     function saveExpense(e) {
         e.preventDefault();
-
+        console.log(token);
         if (!spendOn || !money) return toast.info("Fill Items and Amount both");
         if (isNaN(Number(money))) return toast.info("Amount should be Number");
 
         // convert spendOn string into an array
         const spendOnArray = spendOn.split(",").map((item)=> item.trim());
 
-        // get token from the localStorage
-        let token = localStorage.getItem("monthlyToken");
-
         // create a POST request
         const postExpense = fetch('http://localhost:7000/api/storeExpense', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `${token}`
+                "Authorization": `JWT ${token}`
             },
             body: JSON.stringify({spendOn: spendOnArray, money: Number(money)})
         })
@@ -49,6 +49,10 @@ function Form() {
         })
 
     }
+
+    useEffect(()=> {
+        
+    }, []);
 
     return (
         <>

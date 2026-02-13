@@ -19,6 +19,7 @@ function App() {
  
   // const [ userNameApp, setUserName ] = useState("");
   const dispatch = useDispatch();
+
  
   useEffect(()=> {
     // getting logged user from the local storage
@@ -28,6 +29,7 @@ function App() {
     if (user && token) {
       // And subscribe into setAuth reducer function
       dispatch(setAuth({user: user ? user: null, token: token ? token:null}));
+  
     }
 
     if (!user || !token) {  
