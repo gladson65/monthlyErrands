@@ -13,6 +13,7 @@ const SignUp = lazy(()=> import('./components/SignUp.jsx'));
 const Login = lazy(()=> import('./components/LogIn.jsx'));
 const LogOut = lazy(()=> import('./components/Logout.jsx'));
 const Form = lazy(()=> import('./components/Form.jsx'));
+const Dashboard = lazy(()=> import('./components/Dashboard.jsx'));
 
 
 // creating app router
@@ -54,6 +55,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback="Loding...">
             <Form />
+          </Suspense>
+        )
+      },
+      {
+        path: "dashboard",
+        element: (
+          <Suspense fallback="Loding...">
+            <Dashboard />
           </Suspense>
         )
       },

@@ -37,10 +37,14 @@ function Navbar() {
                         </h1>
                     </div>
                     <div id="navigation" className='w-full'>
+                        
                         {
                             uSer ?
                             <>
-                                <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{uSer}</Link>
+                                <div className='flex justify-center items-center gap-7'>
+                                    <Link to={"dashboard"} className='bg-yellow-200 text-blue-900'>Dashboard</Link>
+                                    <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{uSer}</Link>
+                                </div>
                             </>
                             :
                             <>
