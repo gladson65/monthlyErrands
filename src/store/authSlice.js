@@ -5,6 +5,7 @@ const authSlice = createSlice({
     initialState: {
         authUser: null,
         authToken: localStorage.getItem('monthlyToken'),
+        authEmail: localStorage.getItem('monthlyEmail'),
         loading: true,
     },
 
@@ -12,6 +13,7 @@ const authSlice = createSlice({
         setAuth: (state, action) => {
             state.authUser = action.payload.user;
             state.authToken = action.payload.token;
+            state.authEmail = action.payload.email;
             state.loading = false;
 
             // Persist token to localStorage for session persistence

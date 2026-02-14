@@ -12,13 +12,15 @@ function Form() {
     const [ money, setMoney ] = useState(0);
 
     // get token from the redux 
-    let token = useSelector((store)=> store.auth.authToken)
+    let token = useSelector((store)=> store.auth.authToken);
+    // get email from the redux
+    let email = useSelector((store)=> store.auth.authEmail);
 
     // function for storing expenses
     function saveExpense(e) {
         e.preventDefault();
         console.log(token);
-        if (!spendOn || !money) return toast.info("Fill Items and Amount both");
+        if (!spendOn || !money || !email) return toast.info("Fill Items, Amount and Email");
         if (isNaN(Number(money))) return toast.info("Amount should be Number");
 
         // convert spendOn string into an array
@@ -31,7 +33,7 @@ function Form() {
                 "Content-Type": "application/json",
                 "Authorization": `JWT ${token}`
             },
-            body: JSON.stringify({spendOn: spendOnArray, money: Number(money)})
+            body: JSON.stringify({spendOn: spendOnArray, money: Number(money), email: email})
         })
 
         const postExpenseResult = postExpense.then((expense)=> {
@@ -69,6 +71,7 @@ function Form() {
                     </label>
                     <input onChange={(e)=> setMoney(e.target.value)} id='amount' type='currency' placeholder='Total Amount' className="border-2 w-full h-10
                         focus:outline-2 outline-cyan-500 focus:border-0 focus:shadow-xl transition-all duration-200 rounded-2xl" required/>
+
                 </form>
                 <div onClick={saveExpense} id='buttonDiv'>
                     <button>Save It</button>

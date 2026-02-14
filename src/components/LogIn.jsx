@@ -58,7 +58,7 @@ function Login() {
                     localStorage.setItem('monthlyToken', `JWT ${user.token}`);
 
                     // store in redux
-                    dispatch(setAuth({user: user.name, token: user.token}));
+                    dispatch(setAuth({user: user.name, token: user.token, email: user.email}));
 
                     // clear the form data
                     document.getElementById("email").value = "";
