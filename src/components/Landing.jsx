@@ -30,7 +30,9 @@ function Landing({token}) {
                         </>
                         :
                         <>
-                            <button>Login to track expense</button>
+                            <Link to={"login"}>
+                                <button>Login to track expense</button>
+                            </Link>
                         </>
                         
                     }
