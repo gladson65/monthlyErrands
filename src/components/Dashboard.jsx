@@ -1,4 +1,4 @@
-import './Dashboard.css'
+import './Dashboard.css';
 
 function Dashboard() {
 
@@ -7,6 +7,10 @@ function Dashboard() {
         <>
             <div id="dashboard">
                 <h1>Your Expenses</h1>
+
+                <div id='expenseDiv'>
+
+                </div>
 
             </div>
         </>
