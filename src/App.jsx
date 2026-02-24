@@ -26,10 +26,11 @@ function App() {
     const user = localStorage.getItem('monthlyUser');
     const token = localStorage.getItem('monthlyToken');
     const email = localStorage.getItem('monthlyEmail');
+    const userID = localStorage.getItem('monthlyUserID');
 
     if (user && token) {
       // And subscribe into setAuth reducer function
-      dispatch(setAuth({user: user ? user : null, token: token ? token : null, email: email ? email : null}));
+      dispatch(setAuth({user: user ? user : null, token: token ? token : null, email: email ? email : null, userID: userID ? userID : null}));
   
     }
 

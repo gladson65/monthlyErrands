@@ -15,6 +15,8 @@ function Form() {
     let token = useSelector((store)=> store.auth.authToken);
     // get email from the redux
     let email = useSelector((store)=> store.auth.authEmail);
+    // get userID from the redux
+    let userID = useSelector((store)=> store.auth.userID)
 
     // function for storing expenses
     function saveExpense(e) {
@@ -33,7 +35,7 @@ function Form() {
                 "Content-Type": "application/json",
                 "Authorization": `JWT ${token}`
             },
-            body: JSON.stringify({spendOn: spendOnArray, money: Number(money), email: email})
+            body: JSON.stringify({spendOn: spendOnArray, money: Number(money), email: email, userID: userID})
         })
 
         const postExpenseResult = postExpense.then((expense)=> {
@@ -41,7 +43,7 @@ function Form() {
         })  
         
         postExpenseResult.then((expenseData)=> {
-            if (expenseData.key !== "success" || expenseData.error) return toast.error("Something went wrong!");
+            if (expenseData.key !== "success" || expenseData.error) return toast.error(`${expenseData.error === 'jwt expired' ? 'Session timeout, log in again' : 'Something went wrong'}`);
             if (expenseData.key === "success") {
                 toast.success(`${expenseData.message}`);
                 document.getElementById("form").reset();

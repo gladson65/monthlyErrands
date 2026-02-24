@@ -1,7 +1,36 @@
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './Dashboard.css';
 
 function Dashboard() {
 
+    // store expenses
+    const [ expenseData, setExpenseData ] = useState([]);
+
+    // get user email and token from the redux state
+    const email = useSelector((store)=> store.auth.authEmail);
+    const token = useSelector((store)=> store.auth.authToken);
+
+    useEffect(()=> {
+        if (!email || !token) return;
+        // hit a get request
+        const expenses = fetch(`http://localhost:7000/api/getExpenses/${email}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `JWT ${token}`
+            },
+            
+        })
+
+        const expenseResult = expenses.then((expense)=> {
+            return expense.json();
+        })
+
+        expenseResult.then((expenses)=> {
+            setExpenseData(prev=> expenses.expenses);
+        })
+    }, [])
 
     return (
         <>
