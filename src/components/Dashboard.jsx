@@ -7,19 +7,20 @@ function Dashboard() {
     // store expenses
     const [ expenseData, setExpenseData ] = useState([]);
 
-    // get user email and token from the redux state
-    const email = useSelector((store)=> store.auth.authEmail);
+    // get user ID and token from the redux state
+    const userID = useSelector((store)=> store.auth.userID);
     const token = useSelector((store)=> store.auth.authToken);
 
+
     useEffect(()=> {
-        if (!email || !token) return;
+        if (!userID || !token) return;
         // hit a get request
-        const expenses = fetch(`http://localhost:7000/api/getExpenses/${email}`, {
+        const expenses = fetch(`http://localhost:7000/api/getExpenses/${userID}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `JWT ${token}`
-            },
+            }
             
         })
 
@@ -28,8 +29,11 @@ function Dashboard() {
         })
 
         expenseResult.then((expenses)=> {
+            
             setExpenseData(prev=> expenses.expenses);
         })
+        
+        
     }, [])
 
     return (
