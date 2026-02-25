@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import DashboardItem from './DashboardItem';
 import './Dashboard.css';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
 
@@ -40,7 +41,10 @@ function Dashboard() {
     return (
         <>
             <div id="dashboard">
-                <h1>Your Expenses</h1>
+                <h1>
+                    Your Expenses 
+                    <Link to="/"> ← Home </Link>
+                </h1>
 
                 <div id='expenseDiv'>
                     {  
