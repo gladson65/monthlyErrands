@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import DashboardItem from './DashboardItem';
 import './Dashboard.css';
 
 function Dashboard() {
@@ -29,7 +30,7 @@ function Dashboard() {
         })
 
         expenseResult.then((expenses)=> {
-            
+            console.log(expenses.expenses);
             setExpenseData(prev=> expenses.expenses);
         })
         
@@ -42,7 +43,17 @@ function Dashboard() {
                 <h1>Your Expenses</h1>
 
                 <div id='expenseDiv'>
-
+                    {  
+                       expenseData.length > 0 ? 
+                    
+                       expenseData.map((expense)=> {
+                        return <DashboardItem key={expense._id} data={expense}/>
+                       })
+                       :    
+                       <>
+                        <p>No expenses</p>
+                       </>
+                    }
                 </div>
 
             </div>
