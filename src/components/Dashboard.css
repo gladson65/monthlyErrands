@@ -2,9 +2,28 @@
 #dashboard {
     width: 100%;
     height: 100dvh;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+#dashboard h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    height: 200px;
 }
 
 #expenseDiv {
     height: auto;
+    width: auto;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }

@@ -30,7 +30,7 @@ function Dashboard() {
         })
 
         expenseResult.then((expenses)=> {
-            console.log(expenses.expenses);
+            // storing expense results in a state variable
             setExpenseData(prev=> expenses.expenses);
         })
         
