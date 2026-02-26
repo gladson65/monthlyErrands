@@ -1,17 +1,23 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import DashboardItem from './DashboardItem';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
+import { sortExpense } from '../store/authSlice.js';
 
 function Dashboard() {
 
     // store expenses
     const [ expenseData, setExpenseData ] = useState([]);
 
+    // for dispatch action
+    const dispatch = useDispatch();
+
     // get user ID and token from the redux state
     const userID = useSelector((store)=> store.auth.userID);
     const token = useSelector((store)=> store.auth.authToken);
+    const sortedExpenses = useSelector((store)=> store.auth.sortedExpense);
 
 
     useEffect(()=> {
@@ -31,8 +37,16 @@ function Dashboard() {
         })
 
         expenseResult.then((expenses)=> {
-            // storing expense results in a state variable
-            setExpenseData(prev=> expenses.expenses);
+            // check session has expired or not
+            if (expenses.error === 'jwt expired') {
+                return toast.error("You session has been expired. Please log in!")
+            }
+            else {
+                // storing expense results in a state variable
+                // setExpenseData(prev=> expenses.expenses);
+                // storing expense result in redux state
+                dispatch(sortExpense(expenses));
+            }
         })
         
         
@@ -48,9 +62,9 @@ function Dashboard() {
 
                 <div id='expenseDiv'>
                     {  
-                       expenseData.length > 0 ? 
+                       sortedExpenses?.length > 0 ? 
                     
-                       expenseData.map((expense)=> {
+                       sortedExpenses.map((expense)=> {
                         return <DashboardItem key={expense._id} data={expense}/>
                        })
                        :    

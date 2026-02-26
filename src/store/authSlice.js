@@ -7,6 +7,7 @@ const authSlice = createSlice({
         authToken: localStorage.getItem('monthlyToken'),
         authEmail: localStorage.getItem('monthlyEmail'),
         userID: localStorage.getItem('monthlyUserID'),
+        sortedExpense: [],
         loading: true,
     },
 
@@ -30,11 +31,18 @@ const authSlice = createSlice({
             state.loading = false; // Set loading to false
         },
 
+        sortExpense: (state, action) => {
+            // sorted expenses by date
+            state.sortedExpense = action.payload.expenses.sort(
+                (a, b)=> new Date(b.created_at) - new Date(a.created_at)
+            )
+        }
+
     }
 })
 
 // Export action to use in components
-export const { setAuth, clearAuth } = authSlice.actions;
+export const { setAuth, clearAuth, sortExpense } = authSlice.actions;
 
 // Export the reducer to be used in the store configuration
 export default authSlice.reducer;
