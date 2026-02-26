@@ -33,7 +33,7 @@ const authSlice = createSlice({
 
         sortExpense: (state, action) => {
             // sorted expenses by date
-            state.sortedExpense = action.payload.expenses.sort(
+            state.sortedExpense = [...action.payload.expenses].sort(
                 (a, b)=> new Date(b.created_at) - new Date(a.created_at)
             )
         }
