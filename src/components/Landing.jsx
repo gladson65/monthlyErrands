@@ -39,7 +39,7 @@ function Landing({token}) {
                     
                 </div>
                 <div className='landingImgDiv'>
-                    <img src='landingImage.png' width="400px" height="400px" alt='landing-image'/>
+                    <img src='landing.jpeg' width="400px" height="400px" alt='loading image...'/>
                 </div>
             </div>
         </>

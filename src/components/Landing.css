@@ -4,11 +4,34 @@
     padding-top: 50px;
 }
 
+#landingDiv::before {
+    /* pseudo-element for the background */
+    content: ""; 
+    /* Position it absolutely within the container */
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    width: 100%;
+    height: 100dvh;
+    /* background image and its properties */
+    background-image: url(backgroundImage.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Ensures the image covers the area */
+    background-size: cover;
+    /* Adjust the opacity (0.0 to 1.0) */
+    opacity: 0.1;
+    /* Place it behind the content */
+    z-index: -1; 
+}
+
 .landing-text {
     height: 100%;
     width: 100%;
     padding-top: 40px;
     padding-left: 20px;
+    z-index: 1;
 }
 
 .landing-text button {
@@ -30,8 +53,9 @@
     display: flex;
     justify-content: center;
     align-items: start;
+    z-index: 1;
 }
 
 .landingImgDiv img {
-    border-radius: 20px;
+    border-radius: 40px;
 }

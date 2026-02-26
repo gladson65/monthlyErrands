@@ -29,11 +29,11 @@ function Navbar() {
     return (
 
         <>
-            <header className="w-dvw h-20 bg-sky-200">
-                <nav className="w-full h-full bg-blue-300">
+            <header className="w-dvw h-20">
+                <nav className="w-full h-full">
                     <div id="logo" className='w-full text-center'>
                         <h1 className='font-bold'>
-                            Monthly Errands
+                            Track Expenses
                         </h1>
                     </div>
                     <div id="navigation" className='w-full'>
@@ -43,7 +43,11 @@ function Navbar() {
                             <>
                                 <div className='flex justify-center items-center gap-7'>
                                     <Link to={"dashboard"} className='bg-yellow-200 text-blue-900'>Dashboard</Link>
-                                    <Link to={"logout"} className='bg-zinc-600 text-yellow-300'>{uSer}</Link>
+                                    <Link to={"logout"} className='bg-zinc-600 text-yellow-300 relative'>
+                                        {uSer}
+                                        <span className='w-[6px] h-[6px] bg-green-400 rounded-xl absolute top-1 right-1 animate-pulse'></span>
+                                    </Link>
+                                    
                                 </div>
                             </>
                             :
