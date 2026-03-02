@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        authUser: null,
+        authUser: localStorage.getItem('monthlyUser'),
         authToken: localStorage.getItem('monthlyToken'),
         authEmail: localStorage.getItem('monthlyEmail'),
         userID: localStorage.getItem('monthlyUserID'),
@@ -33,9 +33,15 @@ const authSlice = createSlice({
 
         sortExpense: (state, action) => {
             // sorted expenses by date
-            state.sortedExpense = [...action.payload.expenses].sort(
-                (a, b)=> new Date(b.created_at) - new Date(a.created_at)
-            )
+            if (action.payload.expenses === 'No Expense found') {
+                return [];
+            }
+            else {
+                state.sortedExpense = action.payload.expenses.sort(
+                    (a, b)=> new Date(b.created_at) - new Date(a.created_at)
+                )
+            }
+            
         }
 
     }

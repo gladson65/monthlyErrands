@@ -21,7 +21,6 @@ function Form() {
     // function for storing expenses
     function saveExpense(e) {
         e.preventDefault();
-        console.log(token);
         if (!spendOn || !money || !email) return toast.info("Fill Items, Amount and Email");
         if (isNaN(Number(money))) return toast.info("Amount should be Number");
 

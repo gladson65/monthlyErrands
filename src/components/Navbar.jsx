@@ -13,7 +13,6 @@ function Navbar() {
     const uSer = useSelector((state)=> state.auth.authUser);
     
     useEffect(()=> {
-        console.log("from navbar")
         console.log("from redux", uSer);
         // taking data from the local storage
         const token = localStorage.getItem("monthlyToken");
@@ -22,8 +21,10 @@ function Navbar() {
             // get the login user
             const userName = localStorage.getItem("monthlyUser");
             // store inside state variable
-            setShowName(prev=> userName);
+            setShowName(prev=> uSer);
         }
+        setShowName(prev=> uSer);
+        console.log("navbar user", uSer)
     }, []);
 
     return (
@@ -39,12 +40,12 @@ function Navbar() {
                     <div id="navigation" className='w-full'>
                         
                         {
-                            uSer ?
+                            uSer || showName ?
                             <>
                                 <div className='flex justify-center items-center gap-7'>
                                     <Link to={"dashboard"} className='bg-yellow-200 text-blue-900'>Dashboard</Link>
                                     <Link to={"logout"} className='bg-zinc-600 text-yellow-300 relative'>
-                                        {uSer}
+                                        {showName || uSer}
                                         <span className='w-[6px] h-[6px] bg-green-400 rounded-xl absolute top-1 right-1 animate-pulse'></span>
                                     </Link>
                                     

@@ -24,7 +24,7 @@ function DashboardItem({data}) {
                 <p>{data.money}</p>
                 <ul>
                     {
-                        data.spendOn.length > 0 ?
+                        data?.spendOn?.length > 0 ?
                         data.spendOn.map((item, i)=> {
                             return <li key={i}>{item}</li>
                         })
