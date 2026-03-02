@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './DashboardItem.css'
 
 function DashboardItem({data}) {
@@ -20,9 +21,14 @@ function DashboardItem({data}) {
     return (
         <>
             <div id="expenseItemDiv">
-                <p>User: {data.email}</p>
-                <p>Spent: {data.money}</p>
+                <p className='text-sm'>User: {data.email}</p>
+                <p className='text-sm'>Spent: {data.money}</p>
                 <ul>
+                    {
+                        data?.spendOn?.length > 0 &&
+                        <span>{data.spendOn.length}</span>
+                    }
+
                     {
                         data?.spendOn?.length > 0 ?
                         data.spendOn.map((item, i)=> {
@@ -34,8 +40,8 @@ function DashboardItem({data}) {
                         </>
                     }
                 </ul>
-                <p>Date: {day}-{month}-{year}</p>
-                <p>Time: {hours}:{minutes}:{seconds}</p>
+                <p className='text-sm'>Date: {day}-{month}-{year}</p>
+                <p className='text-sm'>Time: {hours}:{minutes}:{seconds}</p>
             </div>
         </>
     )

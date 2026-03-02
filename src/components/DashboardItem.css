@@ -1,16 +1,31 @@
 
 #expenseItemDiv {
     width: 300px;
-    height: 200px;
+    height: 220px;
     padding: 10px;
     border-radius: 7px;
-    background-color: rgb(180, 244, 223);
+    background-color: #C7EABB;
 }
 
 #expenseItemDiv ul {
+    margin: 10px 0px;
     padding: 4px;
     height: 50%;
+    position: relative;
+    text-align: center;
     border-radius: 7px;
     overflow-y: scroll;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
+}
+
+#expenseItemDiv ul span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    text-align: center;
+    color: aqua;
+    background-color: black;
+    border-radius: 50%;
 }
