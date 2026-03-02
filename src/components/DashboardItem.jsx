@@ -20,8 +20,8 @@ function DashboardItem({data}) {
     return (
         <>
             <div id="expenseItemDiv">
-                <p>{data.email}</p>
-                <p>{data.money}</p>
+                <p>User: {data.email}</p>
+                <p>Spent: {data.money}</p>
                 <ul>
                     {
                         data?.spendOn?.length > 0 ?
